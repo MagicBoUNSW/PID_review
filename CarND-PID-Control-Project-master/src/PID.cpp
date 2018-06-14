@@ -1,7 +1,7 @@
 #include "PID.h"
 #include <cmath>
 #include <iostream>
-
+#include <limits>
 using namespace std;
 
 /*
@@ -87,7 +87,7 @@ void PID::UpdateError(double cte) {
 }
 
 double PID::TotalError() {
-    return 0.0;  // ?
+    return -(Kp_ * p_error + Ki_ * i_error + Kd_ * d_error);
 }
 
 void PID::AddToParameterAtIndex(int index, double amount) {
