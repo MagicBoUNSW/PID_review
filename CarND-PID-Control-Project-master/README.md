@@ -17,6 +17,7 @@ The D, or "differential", component counteracts the P component's tendency to ri
 The I, or "integral", component counteracts a bias in the CTE which prevents the P-D controller from reaching the center line. This bias can take several forms, such as a steering drift (as in the Control unit lessons), but I believe that in this particular implementation the I component particularly serves to reduce the CTE around curves.
 
 The final PID controller implementation performed much like in the following video (although, the controller performance suffered due to the screen recording consuming computation resources away from the websocket).
+
 [Final Parameters](https://github.com/MagicBoUNSW/PID_review/tree/master/CarND-PID-Control-Project-master/demo_videos/PID09%20-%20final%20settings.m4v)
 
 The following video demonstrates the subtle difference in performance when the I component is removed from the controller. Notice that the center line is not followed as closely around curves.
