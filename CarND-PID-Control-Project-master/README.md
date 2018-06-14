@@ -17,15 +17,15 @@ The D, or "differential", component counteracts the P component's tendency to ri
 The I, or "integral", component counteracts a bias in the CTE which prevents the P-D controller from reaching the center line. This bias can take several forms, such as a steering drift (as in the Control unit lessons), but I believe that in this particular implementation the I component particularly serves to reduce the CTE around curves.
 
 The final PID controller implementation performed much like in the following video (although, the controller performance suffered due to the screen recording consuming computation resources away from the websocket).
-[Final Parameters](https://github.com/jeremy-shannon/CarND-PID-Control-Project/blob/master/demo_videos/PID09%20-%20final%20settings.m4v)
+[Final Parameters](https://github.com/MagicBoUNSW/PID_review/tree/master/CarND-PID-Control-Project-master/demo_videos/PID09%20-%20final%20settings.m4v)
 
 The following video demonstrates the subtle difference in performance when the I component is removed from the controller. Notice that the center line is not followed as closely around curves.
 
-[I Parameter Removed](https://github.com/jeremy-shannon/CarND-PID-Control-Project/blob/master/demo_videos/PID10%20-%20zero%20i.m4v)
+[I Parameter Removed](https://github.com/MagicBoUNSW/PID_review/tree/master/CarND-PID-Control-Project-master/demo_videos/PID10%20-%20zero%20i.m4v)
 
 This final video demonstrates the disastrous effects of removing the D component from the controller. It begins to ring back and forth across the center line until finally leaving the track.
 
-[D Parameter Removed](https://github.com/jeremy-shannon/CarND-PID-Control-Project/blob/master/demo_videos/PID11%20-%20zero%20d.m4v)
+[D Parameter Removed](https://github.com/MagicBoUNSW/PID_review/tree/master/CarND-PID-Control-Project-master/demo_videos/PID11%20-%20zero%20d.m4v)
 - *Describe how the final hyperparameters were chosen.*
 
 Hyperparameters were tuned manually at first. This was necessary because the narrow track left little room for error, and when attempting to automate parameter optimization (such as Twiddle) it was very common for the car to leave the track, thus invalidating the optimization. Once I found parameters that were able to get the car around the track reliably, I then implemented Twiddle. I felt it necessary to complete a full lap with each change in parameter because it was the only way to get a decent "score" (total error) for the parameter set. For this reason my parameter changes are allowed to "settle in" for 100 steps and are then evaluated for the next 2000 steps. In all, I allowed Twiddle to continue for over 1 million steps (or roughly 500 trips around the track) to fine tune the parameters to their final values (P: 0.134611, I: 0.000270736, D: 3.05349).
@@ -48,7 +48,7 @@ I also implemented a PID controller for the throttle, to maximize the car's spee
   * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
   * If you install from source, checkout to commit `e94b6e1`, i.e.
     ```
-    git clone https://github.com/uWebSockets/uWebSockets 
+    git clone https://github.com/uWebSockets/uWebSockets
     cd uWebSockets
     git checkout e94b6e1
     ```
@@ -62,7 +62,7 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+4. Run it: `./pid`.
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 
@@ -124,4 +124,3 @@ still be compilable with cmake and make./
 
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
