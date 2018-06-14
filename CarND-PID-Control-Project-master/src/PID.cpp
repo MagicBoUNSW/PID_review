@@ -13,9 +13,9 @@ PID::PID() {}
 PID::~PID() {}
 
 void PID::Init(double Kp, double Ki, double Kd) {
-    PID::Kp = Kp;
-    PID::Ki = Ki;
-    PID::Kd = Kd;
+    PID::Kp_ = Kp;
+    PID::Ki_ = Ki;
+    PID::Kd_ = Kd;
     p_error = d_error = i_error = 0.0;
 
     // Twiddling parameters
@@ -81,7 +81,7 @@ void PID::UpdateError(double cte) {
         }
         total_error = 0;
         cout << "new parameters" << endl;
-        cout << "P: " << Kp << ", I: " << Ki << ", D: " << Kd << endl;        
+        cout << "P: " << Kp_ << ", I: " << Ki_ << ", D: " << Kd_ << endl;        
     }
     step++;
 }
@@ -92,13 +92,13 @@ double PID::TotalError() {
 
 void PID::AddToParameterAtIndex(int index, double amount) {
     if (index == 0) {
-        Kp += amount;
+        Kp_ += amount;
     }
     else if (index == 1) {
-        Kd += amount;
+        Kd_ += amount;
     }
     else if (index == 2) {
-        Ki += amount;
+        Ki_ += amount;
     }
     else {
         std::cout << "AddToParameterAtIndex: index out of bounds";
